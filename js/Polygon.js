@@ -35,6 +35,9 @@ class Polygon {
         })
 
         ctx.fillStyle = fillColor;
+        ctx.strokeStyle = fillColor;
+        
         ctx.fill();
+        ctx.stroke();
     }
 }

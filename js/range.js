@@ -82,8 +82,8 @@ function trangleSection(pointOne, pointTwo, pointThree) {
 
         // sort y range from small to big
         var yRange = [
-            parseInt(percentage * (y2 - y1) + y1),
-            parseInt(percentage * (y3 - y1) + y1)
+            Math.ceil(percentage * (y2 - y1) + y1),
+            Math.ceil(percentage * (y3 - y1) + y1)
         ].sort((a, b) => a - b);
 
         if (yRange[1] == yRange[0]) {

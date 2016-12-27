@@ -71,6 +71,7 @@ class Point {
 
                 ctx.moveTo(points[0].p.x, points[0].p.y);
                 ctx.lineTo(points[0].opposite.p.x, points[0].opposite.p.y)
+                ctx.lineTo(points[0].opposite.p.x, points[0].opposite.p.y)
 
                 if (/[OR]/.test(points[0].name)) {
 

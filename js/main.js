@@ -16,6 +16,15 @@ function init(precision,imageSrc){
     step = precision;
 
     oImage.src = imageSrc;
+}
+
+// resize the canvas and redraw all pixels
+oImage.onload = function() {
+    oC.width = oImage.width;
+    oC.height = oImage.height;
+
+    ctx.drawImage(oImage, 0, 0)
+
 
     // generate low-poly trangle points
     for (let col = 0; col < oC.width / step + 3; col++) {
@@ -24,10 +33,6 @@ function init(precision,imageSrc){
             points[row][col] = new Point(col, row);
         }
     }
-}
-
-oImage.onload = function() {
-    ctx.drawImage(oImage, 0, 0)
 
     points.forEach(function(row) {
         row.forEach(function(singlePoint) {
@@ -35,12 +40,14 @@ oImage.onload = function() {
         })
     })
 
-    // ctx.strokeStyle="rgba(255,255,255,0.1)"
+    // uncomment line below to see the lowpoly grid
     // ctx.stroke();
 
     imageArray = ctx.getImageData(0, 0, oC.width, oC.height);
 
-    fillColor();
+    polygons.forEach((polygon) => {
+        fillColor(polygon);
+    })
 }
 
 /*
@@ -124,7 +131,7 @@ function avgColor(colorArray) {
 
     // invalid value
     if (/NaN/.test(colorStr)) {
-        return 'red';
+        return 'white';
     }
 
     return colorStr;
