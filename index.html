@@ -13,21 +13,68 @@
     canvas {
         background-color: white;
     }
+
+    .message-box{
+    	width: 300px;
+    	padding: 20px 40px;
+    	position: fixed;
+    	top: 0;
+    	left: 50%;
+    	transform: translateX(-50%);
+    	background-color: #1E2FA7;
+    	color: #FF2F60;
+    	font-family: "Courier"
+    }
+
+    #fileName{
+    	-webkit-appearance:none;
+    	border: none;
+    	box-shadow: none;
+    	margin: 40px 0 10px 0;
+    	height: 20px;
+    	width: 70%;
+    	background-color: transparent;
+    	border-bottom: 1px solid #FF2F60;
+    	padding-left: 8px;
+    	outline: none;
+    	color: white;
+    	color: #FF2F60;
+    }
+
+    #fileName::-webkit-input-placeholder,#fileName::-moz-input-placeholder {
+    	font-family: "Courier";
+    	color: #FF2F60;
+    }
+
+    .highlight{
+    	color: #1E2FA7;
+    	background-color:#FF2F60;
+    	cursor: pointer;
+    }
     </style>
 </head>
 
 <body>
-    <canvas></canvas>
+	<div class="message-box">
+		Feel free to drag images with .png or .jpg to this page.
+		<input type="text" id="fileName" placeholder="Fill file name here">.png
+		<br>
+		<span class="highlight" id="downloadImage">click</span> to download current image.
+	</div>
+    <canvas>
+    	Your browser doesn't support HTML5.Go to install latest Chrome or Firefox
+    </canvas>
     <script src="js/common.js"></script>
     <script src="js/Polygon.js"></script>
     <script src="js/Point.js"></script>
     <script src="js/Vector.js"></script>
     <script src="js/range.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/change.js"></script>
     <script>
-    lowpolify('./demo.jpg', 20);
+    	lowpolify('./demo.jpg', 20);
 
-    // lowpolify('path/to/image.png'[,precision])
+    	// lowpolify('path/to/image.png'[,precision])
     </script>
 </body>
 
