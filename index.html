@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		body{
-			/*background-color: black;*/
-			margin: 0;
-		}
-
-		canvas{
-			background-color: white;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    body {
+        /*background-color: black;*/
+        margin: 0;
+    }
+    
+    canvas {
+        background-color: white;
+    }
+    </style>
 </head>
-<body>
-	<canvas width="1920" height="1000"></canvas>
 
-	<script src="js/common.js"></script>
-	<script src="js/Polygon.js"></script>
-	<script src="js/Point.js"></script>
-	<script src="js/Vector.js"></script>
-	<script src="js/range.js"></script>
-	<script src="js/main.js"></script>
+<body>
+    <canvas></canvas>
+    <script src="js/common.js"></script>
+    <script src="js/Polygon.js"></script>
+    <script src="js/Point.js"></script>
+    <script src="js/Vector.js"></script>
+    <script src="js/range.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    lowpify('./demo.jpg', 20);
+
+    // lowpolify('path/to/image.png'[,precision])
+    </script>
 </body>
+
 </html>

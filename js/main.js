@@ -10,7 +10,7 @@ var polygons = [];
 
 var oImage = new Image();
 
-function init(precision,imageSrc){
+function lowpolify(imageSrc, precision = 30) {
     points = [];
     polygons = [];
     step = precision;

@@ -5,7 +5,6 @@ class Polygon {
     }
 
     draw(fillColor) {
-
         var {
             points
         } = this;
@@ -36,7 +35,7 @@ class Polygon {
 
         ctx.fillStyle = fillColor;
         ctx.strokeStyle = fillColor;
-        
+
         ctx.fill();
         ctx.stroke();
     }

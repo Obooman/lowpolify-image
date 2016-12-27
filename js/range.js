@@ -3,7 +3,7 @@
  * @param polygon Polygon
  * @return points Array
  * @demo 
- * 		[{x:x1,y:[y1,y2]},{x:x2,y:[y1,y2]}]
+ *      [{x:x1,y:[y1,y2]},{x:x2,y:[y1,y2]}]
  */
 
 function getPoints(polygon) {
@@ -28,11 +28,11 @@ function getPoints(polygon) {
     });
 
     /*
-				· G(x2,y2)
+                · G(x2,y2)
 
-		·E(x1,y1)	·F(x3,y3)
+        ·E(x1,y1)   ·F(x3,y3)
 
- 	 */
+     */
 
     var x1 = a.p.x;
     var y1 = a.p.y;
@@ -54,17 +54,31 @@ function getPoints(polygon) {
     // TODO return trangetSection().concat(trangetSection());
     // Done
 
-    var leftHalf = trangleSection(a, b, d);
-    var rightHalf = trangleSection(c, b, d);
+    var leftHalf = triangleSection(a, b, d);
+    var rightHalf = triangleSection(c, b, d);
 
     return leftHalf.concat(rightHalf);
 }
 
-function trangleSection(pointOne, pointTwo, pointThree) {
+/*
+ * return point range within the triangle founded by three points
+ * @param pointOne Point most left point
+ * @param pointOne Point share x with most left or most right point
+ * @param pointThree Point most right point
+ */
+
+function triangleSection(pointOne, pointTwo, pointThree) {
+
     /*
-     *      ·F
-     * ·E   |
-     *      ·G
+     *          ·F
+     *     ·E   |
+     *          ·G
+     *
+     * or
+     *
+     *     ·F
+     *     |    ·E 
+     *     ·G
      */
 
     var pixelArray = [];
@@ -81,7 +95,7 @@ function trangleSection(pointOne, pointTwo, pointThree) {
     var x3 = pointThree.p.x;
     var y3 = pointThree.p.y;
 
-    // loop from leftX to rightX
+    // loop from E.x to G.x (or opposite)
     for (let x = Math.min(x1, x2); x < Math.max(x1, x2); x++) {
         var percentage = (x - x1) / (x2 - x1);
 
@@ -90,10 +104,6 @@ function trangleSection(pointOne, pointTwo, pointThree) {
             Math.ceil(percentage * (y2 - y1) + y1),
             Math.ceil(percentage * (y3 - y1) + y1)
         ].sort((a, b) => a - b);
-
-        if (yRange[1] == yRange[0]) {
-            yRange[1] += 1;
-        }
 
         pixelArray.push({
             x,

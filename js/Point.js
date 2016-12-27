@@ -4,6 +4,8 @@ class Point {
         this.x = x;
         this.y = y;
 
+        // generate ragular grid and give every point a random range;
+
         this.p = {
             x: x * step + rndSign() * (rnd(0, step / 2)) - step,
             y: y * step + rndSign() * (rnd(0, step / 2)) - step
@@ -42,6 +44,7 @@ class Point {
             Q.opposite = P;
             R.opposite = O;
 
+            // eight vectors with for points
             var OP = new Vector(O, P);
             var PO = new Vector(P, O);
             var OQ = new Vector(O, Q);
@@ -51,11 +54,13 @@ class Point {
             var RQ = new Vector(R, Q);
             var QR = new Vector(Q, R);
 
+            // canculate angles
             O.angle = OP.angleWith(OQ);
             P.angle = PO.angleWith(PR);
             Q.angle = QO.angleWith(QR);
             R.angle = RP.angleWith(RQ);
 
+            // if there's an angle more than 160deg it won't be split to two triangle
             if (
                 O.angle < 160 &&
                 P.angle < 160 &&
