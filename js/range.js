@@ -28,9 +28,9 @@ function getPoints(polygon) {
     });
 
     /*
-				· (x2,y2)
+				· G(x2,y2)
 
-		·(x1,y1)	·(x3,y3)
+		·E(x1,y1)	·F(x3,y3)
 
  	 */
 
@@ -61,18 +61,23 @@ function getPoints(polygon) {
 }
 
 function trangleSection(pointOne, pointTwo, pointThree) {
+    /*
+     *      ·F
+     * ·E   |
+     *      ·G
+     */
 
     var pixelArray = [];
 
-    // very left point
+    // point E
     var x1 = pointOne.p.x;
     var y1 = pointOne.p.y;
 
-    // one of right point
+    // point F
     var x2 = pointTwo.p.x;
     var y2 = pointTwo.p.y;
 
-    // one of right point
+    // point G
     var x3 = pointThree.p.x;
     var y3 = pointThree.p.y;
 
